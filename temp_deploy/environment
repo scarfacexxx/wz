@@ -1,0 +1,25 @@
+# Database configuration
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
+MYSQL_DATABASE=wizards_of_x
+MYSQL_USER=wizards
+MYSQL_PASSWORD=your_secure_password
+
+# Discord webhooks
+DISCORD_ERROR_WEBHOOK=https://discord.com/api/webhooks/your/error/webhook
+DISCORD_INFO_WEBHOOK=https://discord.com/api/webhooks/your/info/webhook
+DISCORD_ALERT_WEBHOOK=https://discord.com/api/webhooks/your/alert/webhook
+
+# Game configuration
+STARTING_BALANCE=20
+MIN_DUEL_BET=10
+MAX_DUEL_BET=1000
+TOURNAMENT_FEE=50
+DAILY_TOURNAMENT_TIME=20:00
+WEEKLY_TOURNAMENT_TIME=SAT-20:00
+
+# System settings
+LOG_LEVEL=INFO
+METRICS_PORT=9100
+COMMAND_COOLDOWN=5
+DUEL_TIMEOUT=300 

@@ -1,0 +1,173 @@
+# .cursorrules for Wizards of X
+
+## Project Overview
+- Wizards of X is a Twitter-only game where players interact exclusively through tweets to @WizardsOfX
+- All game actions (creating wizards, dueling, crafting potions, etc.) are done through Twitter commands
+- Built with ELIZAOS (14.8k+ stars open source agent framework) that provides:
+  • Twitter client for handling @WizardsOfX mentions (no API keys needed)
+  • Multi-agent support with consistent personality
+  • Built-in memory system for game state
+  • Support for multiple LLMs (Llama, GPT-4, Claude)
+  • RAG for game knowledge and command processing
+  • Extensible action system for game commands
+- Hosted on Google Cloud VM (Ubuntu, MySQL)
+- Banking uses @bankrbot (no API integration - works through tweet monitoring)
+
+## Development Environment
+- Google Cloud VM: e2-micro (1 vCPU, 1GB RAM)
+- Ubuntu 20.04 LTS
+- MySQL 8.0
+- Python 3.8+
+- ELIZAOS starter template
+- Base scan for blockchain verification
+
+## Project Structure
+```
+wizards-of-x/
+├── agents/                 # ELIZAOS agent configurations
+│   ├── wizard_agent.json   # Main agent config
+│   └── responses/          # Response templates
+├── game_logic/            # Core game mechanics
+├── database/             # Database operations
+├── utils/               # Helper functions
+└── monitoring/         # System monitoring
+```
+
+## Coding Rules
+1. General:
+   - Follow PEP 8 style (4-space indents, snake_case variables)
+   - Document all functions and classes
+   - Log all critical operations
+   - Handle all edge cases
+
+2. ELIZAOS Integration:
+   - Use character configuration files for agent setup
+   - Monitor tweet patterns for commands and responses
+   - Handle rate limits and timeouts
+   - Maintain conversation context
+
+3. Database:
+   - Use prepared statements
+   - Handle concurrent operations
+   - Implement proper transaction management
+   - Regular backup procedures
+
+4. Banking Operations:
+   - Monitor @bankrbot tweet stream
+   - Verify all transactions on Base scan
+   - Implement proper error handling
+   - Maintain audit trail
+
+## Game Mechanics
+1. Houses & Bonuses:
+   - Ravenclaw: +10% accuracy
+   - Gryffindor: +5 HP
+   - Slytherin: +1 crit dmg
+   - Hufflepuff: +1 HP/turn
+
+2. Spells (15 levels):
+   - Level 1: Incendio, Protego
+   - Level 2: Flipendo
+   - Level 3: Reducto
+   [... up to Level 15: Avada Kedavra]
+
+3. Potions:
+   - Healing (Lvl 1, 30G)
+   - Strength (Lvl 3, 40G)
+   - Focus (Lvl 5, 35G)
+   [... up to Elixir of Power (Lvl 15, 80G)]
+
+4. Combat:
+   - Two-spell combos: +10% bonus
+   - Three-spell combos: +15-20% bonus
+   - House bonuses apply to all calculations
+
+5. XP System:
+   - Duel win: 20 XP
+   - Duel loss: 10 XP
+   - Tournament win: 50 XP
+   - Tournament loss: 10 XP
+   - Level up: 100 × Current Level XP
+
+## Banking System
+1. Deposits:
+   - Monitor "@bankrbot transfer" tweets
+   - Verify transaction hash
+   - Update balance after confirmation
+
+2. Withdrawals:
+   - Process "@WizardsOfX withdraw" commands
+   - 4% total fee:
+     • 2% to prize pool
+     • 2% to burn queue (12-48h delay)
+   - Monitor confirmation tweets
+
+3. Prize Pool:
+   - Daily Tournament: Max(400G, 10% of pool)
+   - Weekly House Cup: Max(200G, 20% of pool)
+
+## Error Handling
+1. Transaction Errors:
+   - Log failed transactions
+   - Revert state changes
+   - Send clear error messages
+   - Implement retry mechanism
+
+2. Game State Errors:
+   - Handle interrupted duels
+   - Manage concurrent operations
+   - Recover from network issues
+   - Maintain data consistency
+
+## Monitoring Requirements
+1. System Health:
+   - Monitor VM resources
+   - Track database performance
+   - Log API response times
+   - Monitor tweet processing
+
+2. Game Economy:
+   - Track prize pool balance
+   - Monitor burn queue
+   - Verify transaction reconciliation
+   - Track player balances
+
+3. Alerts:
+   - Set up Discord webhooks
+   - Configure error notifications
+   - Monitor critical operations
+   - Track system performance
+
+## Testing Requirements
+1. Command Testing:
+   - Test all tweet commands
+   - Verify response formatting
+   - Check error handling
+   - Test rate limiting
+
+2. Banking Tests:
+   - Test deposit flow
+   - Test withdrawal process
+   - Verify fee calculations
+   - Check balance updates
+
+3. Game Logic Tests:
+   - Test combat calculations
+   - Verify XP system
+   - Test tournament logic
+   - Check leaderboard updates
+
+## Deployment
+- Repository: https://github.com/scarfacexxx/wz
+- VM Access: ssh alexandrelermen@35.236.42.175
+- Keep local, GitHub, and VM in sync
+- Use proper branching strategy
+
+## Documentation
+- Maintain inline documentation
+- Update README.md
+- Document all commands
+- Keep error codes updated
+- Document recovery procedures
+
+Remember: This is a Twitter-native game. Everything happens through tweets. No external APIs or websites needed - just ELIZAOS monitoring tweets and Base scan verifying transactions.

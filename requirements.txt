@@ -1,0 +1,28 @@
+# Core dependencies
+elizaos==1.2.3
+sqlalchemy==1.4.41
+aiohttp==3.8.4
+psutil==5.9.4
+python-dotenv==1.0.0
+asyncio==3.4.3
+web3==6.11.3
+
+# Database
+mysqlclient==2.1.1
+alembic==1.9.4
+
+# Monitoring
+discord-webhook==1.1.0
+prometheus-client==0.16.0
+python-json-logger==2.0.7
+
+# Testing
+pytest==7.3.1
+pytest-asyncio==0.20.3
+pytest-cov==4.0.0
+
+# Development
+black==23.1.0
+flake8==6.0.0
+mypy==1.0.1
+isort==5.12.0 

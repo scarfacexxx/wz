@@ -1,0 +1,6 @@
+{
+  "welcome": {
+    "new_player": "Welcome to Wizards of X! 🎮\nCreate your wizard with:\n'@WizardsOfX create [name]'\n• 3-20 chars, alphanumeric only\nWant a tutorial? Add 'tutorial'",
+    "returning_player": "Welcome back, {player_name}! 🎮\nYour current status:\n• Level: {level}\n• HP: {hp}/{max_hp}\n• Balance: {balance} Galleons\nType '@WizardsOfX help' for commands!"
+  }
+} 

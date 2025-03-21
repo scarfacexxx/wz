@@ -1,0 +1,33 @@
+[Unit]
+Description=Wizards of X Game Service
+After=network.target mysql.service
+Wants=mysql.service
+
+[Service]
+Type=simple
+User=wizards
+Group=wizards
+WorkingDirectory=/opt/wizards-of-x
+Environment=PYTHONPATH=/opt/wizards-of-x
+EnvironmentFile=/etc/wizards-of-x/environment
+
+ExecStart=/opt/wizards-of-x/venv/bin/python -m wizards_of_x.main
+Restart=always
+RestartSec=10
+
+# Security
+NoNewPrivileges=yes
+ProtectSystem=full
+PrivateTmp=yes
+
+# Resource limits
+CPUQuota=80%
+MemoryLimit=512M
+TasksMax=100
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target 

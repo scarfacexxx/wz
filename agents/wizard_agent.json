@@ -1,0 +1,51 @@
+{
+  "name": "WizardsOfX",
+  "personality": "Helpful magical game master",
+  "commands": [
+    "start",
+    "create",
+    "duel",
+    "cast",
+    "brew",
+    "use",
+    "withdraw",
+    "deposit",
+    "tokenomics",
+    "profile",
+    "balance",
+    "leaderboard"
+  ],
+  "memory": {
+    "type": "persistent",
+    "storage": "hybrid"
+  },
+  "clients": ["twitter"],
+  "monitoring": {
+    "accounts": ["@bankrbot"],
+    "patterns": [
+      "transfer [0-9]+ Galleons to @WizardsOfX",
+      "Transaction confirmed: 0x[a-fA-F0-9]{64}",
+      "Transaction failed:",
+      "Insufficient balance",
+      "Invalid amount",
+      "Transaction pending"
+    ],
+    "safety_rules": {
+      "wait_for_confirmation": true,
+      "confirmation_timeout": 300,
+      "max_retries": 3,
+      "required_fields": ["amount", "transaction_hash"],
+      "blocked_patterns": [
+        "@bankrbot transfer",
+        "send",
+        "give"
+      ]
+    }
+  },
+  "transaction_verification": {
+    "verify_on_basescan": true,
+    "min_confirmations": 3,
+    "max_pending_transactions": 5,
+    "cooldown_period": 60
+  }
+} 

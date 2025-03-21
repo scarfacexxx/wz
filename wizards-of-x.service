@@ -1,0 +1,13 @@
+[Unit]
+Description=Wizards of X Game Service
+After=network.target
+
+[Service]
+User=alexandrelermen
+Group=alexandrelermen
+WorkingDirectory=/opt/wizards-of-x
+Environment=PATH=/opt/wizards-of-x/venv/bin
+ExecStart=/opt/wizards-of-x/venv/bin/python -m wizards_of_x.main
+
+[Install]
+WantedBy=multi-user.target 
